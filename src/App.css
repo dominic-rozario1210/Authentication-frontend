@@ -1,0 +1,92 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: aliceblue;
+}
+
+.auth-form{
+  width: 400px;
+  height: auto;
+  margin: 110px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px ;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+}
+.auth-form h2{
+  text-align: center;
+  font-size: 30px;
+  color: rgb(19, 108, 160);
+}
+.auth-form p{
+  text-align: center;
+  color: rgb(77, 61, 61);
+}
+.auth-group{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+.auth-group label{
+  color: rgb(136, 34, 34);
+  font-weight: 600;
+}
+.auth-group input{
+  width: 92%;
+  height: 35px;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid;
+  font-size: 15px;
+}
+.auth-form button{
+  background-color: rgb(31, 13, 148);
+  width: 90%;
+  height: 40px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  margin-left: 10px;
+}
+.auth-footer a {
+    text-decoration: none;
+    margin-left: 5px;
+}
+.forgot-pass {
+  text-align: center;
+}
+.forgot-pass a{
+  text-decoration: none;
+  color: blue;
+}
+@media (max-width:419px) {
+  .auth-form{
+    width: 90%;
+    padding: 10px;
+  }
+  
+}
+@media (max-width:356px) {
+  .auth-form{
+    padding: 10px 2px;
+  }
+  .auth-form input{
+    width: 96%;
+  }
+  .auth-form button{
+    width: 95%;
+  }
+}
