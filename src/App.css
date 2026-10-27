@@ -72,6 +72,33 @@ body{
   text-decoration: none;
   color: blue;
 }
+.navbar{
+  display: flex;
+  width: 80%;
+  margin: auto;
+  height: 60px;
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(28, 28, 150);
+  background-color: white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+.navbar h2{
+  font-size: 30px;
+}
+.nav-link{
+  display: flex;
+  gap: 20px;
+}
+.nav-link button{
+  padding: 8px 20px;
+  background-color: rgb(144, 82, 202);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
 @media (max-width:419px) {
   .auth-form{
     width: 90%;
@@ -89,4 +116,10 @@ body{
   .auth-form button{
     width: 95%;
   }
+}
+@media (max-width:388px) {
+  .navbar{
+    width: 100%;
+  }
+  
 }

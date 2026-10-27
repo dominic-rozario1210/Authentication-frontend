@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import axios from 'axios'
 
-axios.defaults.baseURL = "http://localhost:3000/api/auth"
+axios.defaults.baseURL = " https://authentication-backend-lez6.onrender.com/api/auth"
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
