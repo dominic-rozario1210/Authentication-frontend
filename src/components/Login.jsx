@@ -26,7 +26,9 @@ const Login = ({ setIsLoggedIn }) => {
             try {
                 const response = await axios.post("/login", values);
                 toast.success(response.data.message);
-                localStorage.setItem("isLoggedIn", "true")
+                // localStorage.setItem("isLoggedIn", "true")
+
+                localStorage.setItem("token", response.data.token)
                 setIsLoggedIn(true);
                 formik.resetForm();
                 navigate("/")

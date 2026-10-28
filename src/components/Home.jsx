@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const Home = ({isLoggedIn,setIsLoggedIn}) => {
 
     const handleLogout = () => {
-        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("token");
         setIsLoggedIn(false);
 
         toast.success(
@@ -24,7 +24,9 @@ const Home = ({isLoggedIn,setIsLoggedIn}) => {
             {
                 isLoggedIn ?
                  <>
-                   <button>Profile</button>
+                   <Link to="/profile">
+                      <button>Profile</button>
+                    </Link>
                    <button onClick={handleLogout}>Logout</button>
                  </>
                  :

@@ -100,10 +100,53 @@ body{
   font-size: 15px;
   cursor: pointer;
 }
+
+/* profile*/
+
+.profile-card{
+  width: 420px;
+  height: auto;
+  margin: 110px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px ;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.profile-card h1{
+  text-align: center;
+  color: rgb(169, 87, 35);
+  margin-bottom: 5px;
+}
+.profile-content{
+  border: 1px solid rgb(161, 43, 80);
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  background-color: azure;
+  border-radius: 5px;
+}
+.profile-content p{
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(38, 126, 49);
+}
+.profile-info{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+}
 @media (max-width:419px) {
   .auth-form{
     width: 90%;
     padding: 10px;
+  }
+  .profile-card{
+    width: 90%;
   }
   
 }
@@ -121,6 +164,16 @@ body{
 @media (max-width:388px) {
   .navbar{
     width: 100%;
+  }
+  .profile-card{
+    padding:  20px 5px;
+    
+  }
+  .profile-info{
+    margin-bottom: 5px;
+  }
+  .profile-content{
+    padding: 10px;
   }
   
 }
