@@ -60,6 +60,7 @@ body{
   color: white;
   font-size: 20px;
   margin-left: 10px;
+  cursor: pointer;
 }
 .auth-footer a {
     text-decoration: none;
