@@ -7,19 +7,23 @@ A responsive authentication frontend built with React.js that provides user regi
 - User Registration
 - User Login
 - Forgot Password functionality
-- Password Reset using a secure token link
-- JWT token verification through the backend API
+- Password Reset using a JWT token
+- Reset token verification through backend middleware
+- Time-limited password reset links
 - Form validation using Formik and Yup
 - API integration using Axios
 - Toast notifications using React Toastify
-- Navigation using React Router
+- Navigation using React Router DOM
+- Loading states during token verification and form submission
+- Error handling for invalid or expired reset links
+- Password confirmation validation
 - Responsive authentication forms
-- Loading and error handling
+- Redirect to login after successful password reset
 
 ## Tech Stack
 
 - React.js
-- JavaScript
+- JavaScript (ES6+)
 - CSS3
 - Axios
 - React Router DOM
@@ -45,77 +49,82 @@ auth-frontend/
 │   └── main.jsx
 ├── public/
 ├── package.json
+├── vercel.json
 └── README.md
 ```
 
 ## Installation and Setup
 
-1. Clone the repository:
+### 1. Clone the Repository
 
-   ```bash
-   git clone https://github.com/dominic-rozario1210/Authentication-frontend
-   ```
+```bash
+git clone https://github.com/dominic-rozario1210/Authentication-frontend.git
+```
 
-2. Navigate to the project directory:
+### 2. Navigate to the Project Directory
 
-   ```bash
-   cd auth-frontend
-   ```
+```bash
+cd Authentication-frontend
+```
 
-3. Install dependencies:
+### 3. Install Dependencies
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-4. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open the local URL displayed in your terminal, usually `http://localhost:5173`.
-
-## Application Routes
-
-| Route | Description |
-|---|---|
-| `/register` | Create a new account |
-| `/login` | Log in to an existing account |
-| `/forgot-password` | Request a password reset email |
-| `/reset-password/:token` | Verify the reset token and set a new password |
-| `/` | Home page |
-
-## Backend Integration
-
-The frontend communicates with a backend REST API using Axios.
-
-The backend should provide endpoints for registration, login, requesting a password reset, verifying reset tokens, and changing passwords.
-
-Configure the Axios base URL to point to your backend server. For local development, this may be `http://localhost:5000`, depending on your backend configuration.
-
-## Password Reset Flow
-
-1. The user requests a password reset using their registered email address.
-2. The backend generates a time-limited JWT reset token and sends an email.
-3. The user opens the reset link.
-4. The frontend sends the token to the backend for verification.
-5. After successful verification, the user enters a new password.
-6. The backend hashes and saves the new password.
-
-## Running the Project
+### 4. Start the Development Server
 
 ```bash
 npm run dev
 ```
 
-## Future Improvements
+### 5. Open the Application
 
-- Add show/hide password functionality.
-- Improve accessibility and user experience.
-- Add stronger password requirements.
-- Deploy the frontend and connect it to a production backend.
+Open the local URL displayed in your terminal, usually:
 
-## Author
+```text
+http://localhost:5173
+```
 
-Dominic Rozario
+## Application Routes
+
+| Route | Description |
+|---|---|
+| `/` | Home page |
+| `/register` | Create a new account |
+| `/login` | Log in to an existing account |
+| `/forgot-password` | Request a password reset email |
+| `/reset-password/:token` | Verify the reset token and set a new password |
+
+## Backend Integration
+
+The frontend communicates with a Node.js and Express.js REST API using Axios.
+
+The backend uses MongoDB and Mongoose to store user information and `bcrypt` to hash passwords.
+
+### API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/auth/register` | Register a new user |
+| POST | `/api/auth/login` | Authenticate an existing user |
+| POST | `/api/auth/forgot-password` | Request a password reset email |
+| GET | `/api/auth/verify-token` | Verify the reset token |
+| PUT | `/api/auth/change-password` | Update the user's password |
+| GET | `/api/auth/profile` | Retrieve the authenticated user's profile |
+
+The API base URL is configured through Axios. For production, configure it to point to your deployed backend.
+
+## Password Reset Flow
+
+1. The user enters their registered email address on the Forgot Password page.
+2. The backend checks whether the user exists.
+3. The backend generates a JWT reset token with a 10-minute expiration.
+4. The reset link is sent to the user's email using the configured email service.
+5. The user opens the reset link and reaches `/reset-password/:token`.
+6. The frontend sends the token in the `Authorization` header to the backend's `/verify-token` endpoint.
+7. The backend authentication middleware verifies the token and identifies the user.
+8. The user enters a new password and confirms it.
+9. The frontend validates the password fields using Formik and Yup.
+10. The frontend sends a
