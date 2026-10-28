@@ -106,7 +106,7 @@ const App = () => {
       )
     },
      {
-      path:"/reset-password",
+      path:"/reset-password/:token",
       element:(
         <PublicRoute isLoggedIn={isLoggedIn}>
           <ResetPassword/>
