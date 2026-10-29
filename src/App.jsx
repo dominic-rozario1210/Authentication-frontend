@@ -11,6 +11,7 @@ import axios from 'axios';
 import Profile from './components/Profile';
 import PublicRoute from './components/PublicRoute';
 import ProtectedRoute from './components/ProtectedRoute';
+import Admin from './components/Admin';
 
 const App = () => {
 
@@ -118,6 +119,14 @@ const App = () => {
       element:(
         <ProtectedRoute isLoggedIn={isLoggedIn}>
           <Profile/>
+        </ProtectedRoute>
+      )
+    },
+    {
+      path:"/admin",
+      element:(
+        <ProtectedRoute isLoggedIn={isLoggedIn}>
+          <Admin/>
         </ProtectedRoute>
       )
     }

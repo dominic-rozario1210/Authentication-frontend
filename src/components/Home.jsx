@@ -28,6 +28,9 @@ const Home = ({isLoggedIn,setIsLoggedIn}) => {
                       <button>Profile</button>
                     </Link>
                    <button onClick={handleLogout}>Logout</button>
+                   <Link to="admin">
+                       <button> Admin Dashboard</button>
+                   </Link>
                  </>
                  :
                  <>
@@ -37,6 +40,7 @@ const Home = ({isLoggedIn,setIsLoggedIn}) => {
                    <Link to="/register">
                        <button>Register</button>
                    </Link>
+                   
                  </>
             }
         </div>

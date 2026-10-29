@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import * as yup from "yup";
 
 const Login = ({ setIsLoggedIn }) => {
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
     const formik = useFormik({
@@ -23,6 +24,7 @@ const Login = ({ setIsLoggedIn }) => {
                 .required("password is required")
         }),
         onSubmit: async (values) => {
+            setIsLoading(true);
             try {
                 const response = await axios.post("/login", values);
                 toast.success(response.data.message);
@@ -34,11 +36,22 @@ const Login = ({ setIsLoggedIn }) => {
                 navigate("/")
             } catch (error) {
                 toast.error(error.response?.data?.message || "login failed")
+            } finally {
+                setIsLoading(false)
             }
         }
 
 
     })
+    if (isLoading) {
+    return (
+        <div className="loading-page">
+            <div className="spinner"></div>
+            <h2>Logging you in...</h2>
+            <p>Please wait while we verify your credentials.</p>
+        </div>
+    );
+}
     return (
         <div className='auth-page'>
             <div className='auth-form'>
@@ -80,14 +93,16 @@ const Login = ({ setIsLoggedIn }) => {
                                 </p>
                             )}
                     </div>
-                    <button type='submit' >Login</button>
+                    <button type="submit" disabled={isLoading}>
+                       Login
+                    </button>
                 </form>
                 <div className='auth-footer'>
                     <p>
                         Dont have an Account ?
                         <Link to="/register">Register</Link>
                     </p>
-                    
+
                 </div>
                 <div className='forgot-pass'>
                     <Link to="/forgot-password">Forgot Password</Link>
