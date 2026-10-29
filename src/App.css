@@ -351,3 +351,15 @@ body{
         transform: rotate(360deg);
     }
 }
+
+.profile-back-btn{
+  display: flex;
+  margin: auto;
+  width: 100px;
+  padding: 8px;
+  background-color: rgb(80, 196, 80);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}

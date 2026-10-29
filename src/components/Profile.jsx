@@ -1,13 +1,17 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 const Profile = () => {
+    const navigate = useNavigate();
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         const getProfile = async () => {
+
+            
             const token = localStorage.getItem("token")
 
             if (!token) {
@@ -71,8 +75,9 @@ const Profile = () => {
                         <p>{user.role}</p>
                     </div>
                 </div>
-
+                <button  className="profile-back-btn" onClick={() => navigate("/")}>Back to Home</button>
             </div>
+            
             
 
         </div>
