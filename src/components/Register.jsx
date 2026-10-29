@@ -33,7 +33,7 @@ const Register = ({ setIsLoggedIn }) => {
                 localStorage.setItem("isLoggedIn", "true");
                 // setIsLoggedIn(true);
                 formik.resetForm();
-                navigate("/login");
+                navigate("/");
             } catch (error) {
                 toast.error(error.response?.data?.message || "registration failed")
             }
