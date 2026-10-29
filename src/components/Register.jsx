@@ -29,11 +29,11 @@ const Register = ({ setIsLoggedIn }) => {
         onSubmit: async (values) => {
             try {
                 const response = await axios.post("/register", values);
-                toast.success(response.data.message);
+                toast.success(response.data.message || "User registered successfully");
                 localStorage.setItem("isLoggedIn", "true");
-                setIsLoggedIn(true);
+                // setIsLoggedIn(true);
                 formik.resetForm();
-                navigate("/");
+                navigate("/login");
             } catch (error) {
                 toast.error(error.response?.data?.message || "registration failed")
             }
@@ -94,7 +94,9 @@ const Register = ({ setIsLoggedIn }) => {
                                 </p>
                             )}
                     </div>
-                    <button type='submit' >Register</button>
+                    <button type='submit' disabled={formik.isSubmitting}>
+                        {formik.isSubmitting ? "Registering...." : "register"}
+                    </button>
                 </form>
                 <div className='auth-footer'>
                     <p>
